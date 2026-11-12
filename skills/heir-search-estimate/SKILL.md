@@ -7,8 +7,8 @@ description: Estimate how many research hours a US probate heir search will take
 
 Every tool named below comes from the free HeirPros MCP server, `https://heirpros.com/mcp` (Streamable HTTP,
 no sign-in, no API key, all tools read-only). If `estimate_heir_search_hours` is not available, add the server
-first: `claude mcp add --transport http heirpros https://heirpros.com/mcp` (Claude Code), or point any other
-MCP client at the URL.
+first by adding `https://heirpros.com/mcp` as a remote MCP server in your client (setup steps:
+https://heirpros.com/developers/mcp/).
 
 ## Steps
 

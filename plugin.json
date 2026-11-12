@@ -11,11 +11,103 @@
   "homepage": "https://heirpros.com",
   "repository": "https://github.com/nbandan/heirpros-mcp",
   "license": "MIT",
-  "keywords": ["probate", "heir-search", "genealogy", "estate", "legal", "mcp"],
+  "keywords": [
+    "probate",
+    "heir-search",
+    "genealogy",
+    "estate",
+    "legal",
+    "mcp"
+  ],
   "extensions": {
     "com.nousresearch.hermes": {
       "servers": {
-        "heirpros": { "trust": "untrusted" }
+        "heirpros": {
+          "trust": "untrusted"
+        }
+      }
+    },
+    "com.openai": {
+      "interface": {
+        "displayName": "HeirPros",
+        "shortDescription": "Estimate heir search hours",
+        "longDescription": "HeirPros is a US heir search firm that finds missing and unknown heirs for probate attorneys, executors and administrators. This plugin gives HeirPros' own research-hours estimate for a probate heir search, using the same method as the HeirPros quote calculator: 1.5 base hours plus 1 hour for each known heir and each estimated unknown heir. Tell it how many heirs are known and how many are missing, and it returns the estimated hours and how they were worked out. It can also explain what HeirPros does and how its research is documented. Hours only; it does not ask for names or case details, and nothing you send is stored.",
+        "developerName": "HeirPros",
+        "category": "Productivity",
+        "capabilities": [
+          "Estimate heir search hours",
+          "Explain HeirPros heir search services"
+        ],
+        "websiteURL": "https://heirpros.com",
+        "supportURL": "https://heirpros.com/contact-us/",
+        "privacyPolicyURL": "https://heirpros.com/privacy-policy/",
+        "termsOfServiceURL": "https://heirpros.com/terms-of-service/",
+        "defaultPrompt": [
+          "Estimate the hours for an heir search with 4 known heirs and 3 unknown heirs.",
+          "How long might an heir search take for an intestate estate with 2 known and 5 missing heirs?",
+          "What does HeirPros do?"
+        ],
+        "brandColor": "#D93A00",
+        "composerIcon": "./assets/logo.png",
+        "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Basic hours estimate",
+              "prompt": "Estimate the hours for an heir search with 4 known heirs and 3 unknown heirs.",
+              "tools_triggered": "estimate_heir_search_hours",
+              "expected_behavior": "Returns 8.5 estimated hours (1.5 + 4 + 3) and explains the method. No price is given."
+            },
+            {
+              "description": "Estimate with case details",
+              "prompt": "How long might an heir search take for an intestate estate with 2 known heirs and 5 missing heirs?",
+              "tools_triggered": "estimate_heir_search_hours",
+              "expected_behavior": "Calls the tool with known_heirs 2, unknown_heirs 5 and estate_type intestate, and returns 8.5 estimated hours with the method."
+            },
+            {
+              "description": "Single missing heir",
+              "prompt": "We know 1 heir and need to find 1 more. How many research hours would HeirPros estimate?",
+              "tools_triggered": "estimate_heir_search_hours",
+              "expected_behavior": "Returns 3.5 estimated hours and notes that HeirPros confirms final hours before work starts."
+            },
+            {
+              "description": "About HeirPros",
+              "prompt": "What does HeirPros do and how is the research documented?",
+              "tools_triggered": "about_heirpros",
+              "expected_behavior": "Describes HeirPros' heir search service, who it serves and its Genealogical Proof Standard method, with links to heirpros.com."
+            },
+            {
+              "description": "Out-of-range input",
+              "prompt": "Estimate the hours for an heir search with 3 known heirs and 40 unknown heirs.",
+              "tools_triggered": "estimate_heir_search_hours",
+              "expected_behavior": "The tool reports that unknown_heirs must be between 1 and 25; the assistant explains the limit and suggests contacting HeirPros for larger searches."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Pricing request",
+              "prompt": "How much will HeirPros charge me for an heir search?"
+            },
+            {
+              "description": "Unrelated genealogy lookup",
+              "prompt": "Find my great-grandmother's birth record in Ireland."
+            },
+            {
+              "description": "Legal advice",
+              "prompt": "Who legally inherits my father's house in Texas?"
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments. It only returns an hours estimate and general information."
+      },
+      "publication": {
+        "countries": [
+          "US"
+        ],
+        "release_notes": "Initial release: heir search hours estimate and HeirPros service information."
       }
     }
   }
