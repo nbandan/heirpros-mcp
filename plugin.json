@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "heirpros",
+  "version": "1.0.0",
+  "description": "Estimate the research hours for a US probate heir search (finding missing and unknown heirs) with the free HeirPros MCP server. Hours only, no pricing, nothing stored.",
+  "author": {
+    "name": "HeirPros",
+    "email": "sales@heirpros.com",
+    "url": "https://heirpros.com"
+  },
+  "homepage": "https://heirpros.com/developers/mcp/",
+  "repository": "https://github.com/nbandan/heirpros-mcp",
+  "license": "MIT",
+  "keywords": ["probate", "heir-search", "genealogy", "estate", "legal", "mcp"],
+  "extensions": {
+    "com.nousresearch.hermes": {
+      "servers": {
+        "heirpros": { "trust": "untrusted" }
+      }
+    }
+  }
+}

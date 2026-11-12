@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "heirpros": {
+      "type": "streamable-http",
+      "url": "https://heirpros.com/mcp"
+    }
+  }
+}

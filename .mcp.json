@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "heirpros": {
+      "type": "http",
+      "url": "https://heirpros.com/mcp"
+    }
+  }
+}

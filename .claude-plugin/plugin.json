@@ -1,0 +1,10 @@
+{
+  "name": "heirpros",
+  "description": "Estimate the research hours for a US probate heir search (finding missing and unknown heirs) with the free HeirPros MCP server. Hours only, no pricing, nothing stored.",
+  "version": "1.0.0",
+  "author": { "name": "HeirPros", "url": "https://heirpros.com" },
+  "homepage": "https://heirpros.com/developers/mcp/",
+  "repository": "https://github.com/nbandan/heirpros-mcp",
+  "license": "MIT",
+  "keywords": ["probate", "heir-search", "genealogy", "estate", "legal"]
+}
